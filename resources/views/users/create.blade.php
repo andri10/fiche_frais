@@ -32,6 +32,17 @@
                   </div>
                 </div>
                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('First Name') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('first_name') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="first_name" id="input-name" type="text" placeholder="{{ __('First Name') }}" value="{{ old('first_name') }}" required="true" aria-required="true"/>
+                      @if ($errors->has('first_name'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('first_name') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
