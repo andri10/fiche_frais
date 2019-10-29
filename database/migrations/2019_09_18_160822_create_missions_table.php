@@ -13,11 +13,18 @@ class CreateMissionsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('missions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->longText('description');
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

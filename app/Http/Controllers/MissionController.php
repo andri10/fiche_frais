@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mission;
-use Illuminate\Http\Request;
-
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\MissionRequest;
 
 class MissionController extends Controller
 {
@@ -16,7 +15,8 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $missions = Mission::all();
+        $missions = Auth::user()->missions;
+
         return view('missions.index', compact('missions'));
     }
 
@@ -27,7 +27,7 @@ class MissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('missions.create');
     }
 
     /**
@@ -36,9 +36,15 @@ class MissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MissionRequest $request)
     {
-        //
+        Mission::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'user_id' => Auth::user()->id,
+            ]);
+
+        return redirect()->route('missions.index')->withStatus(__('Missions successfully created.'));
     }
 
     /**
@@ -47,7 +53,7 @@ class MissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Mission $mission)
     {
         //
     }
@@ -58,9 +64,9 @@ class MissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mission $mission)
     {
-        //
+        return view('missions.edit', compact('mission'));
     }
 
     /**
@@ -70,9 +76,11 @@ class MissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MissionRequest $request, Mission $mission)
     {
-        //
+        $mission->update($request->all());
+
+        return redirect()->route('missions.index')->withStatus(__('Mission successfully updated.'));
     }
 
     /**
@@ -81,8 +89,10 @@ class MissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mission $mission)
     {
-        //
+        $mission->delete();
+
+        return redirect()->route('missions.index')->withStatus(__('Mission successfully deleted.'));
     }
 }
