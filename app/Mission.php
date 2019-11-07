@@ -20,6 +20,6 @@ class Mission extends Model
 
     public function notes()
     {
-        return $this->belongsToMany('App\Note');
+        return $this->hasMany('App\Note');
     }
 }

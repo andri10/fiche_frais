@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMissionNoteTable extends Migration
+class CreateFraisKmsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,21 @@ class CreateMissionNoteTable extends Migration
      */
     public function up()
     {
-        Schema::create('mission_note', function (Blueprint $table) {
+        Schema::create('frais_kms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
-
+            $table->string('depart');
+            $table->string('arrivee');
+            $table->float('trajets');
+            $table->string('title');
+            $table->longText('description');
+            $table->date('start_at');
+            $table->date('arrival_at');
             $table->unsignedBigInteger('mission_id');
             $table->foreign('mission_id')
                 ->references('id')
                 ->on('missions')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->unsignedBigInteger('notes_id');
-            $table->foreign('notes_id')
-                ->references('id')
-                ->on('notes')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 
@@ -40,6 +38,6 @@ class CreateMissionNoteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mission_note');
+        Schema::dropIfExists('frais_kms');
     }
 }

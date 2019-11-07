@@ -55,7 +55,7 @@ class MissionController extends Controller
      */
     public function show(Mission $mission)
     {
-        //
+        return view('missions.show', compact('mission'));
     }
 
     /**
@@ -80,7 +80,7 @@ class MissionController extends Controller
     {
         $mission->update($request->all());
 
-        return redirect()->route('missions.index')->withStatus(__('Mission successfully updated.'));
+        return back()->withStatus(__('Mission successfully updated.'));
     }
 
     /**
@@ -93,6 +93,6 @@ class MissionController extends Controller
     {
         $mission->delete();
 
-        return redirect()->route('missions.index')->withStatus(__('Mission successfully deleted.'));
+        return back()->withStatus(__('Mission successfully deleted.'));
     }
 }

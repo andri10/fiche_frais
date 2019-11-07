@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-    public function missions()
+    public function mission()
     {
-        return $this->belongsToMany('App\Mission');
+        return $this->hasbelongsTo('App\Mission');
     }
 }

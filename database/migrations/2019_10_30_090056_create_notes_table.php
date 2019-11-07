@@ -23,6 +23,12 @@ class CreateNotesTable extends Migration
             $table->string('tva');
             $table->longText('description');
             $table->text('image');
+            $table->unsignedBigInteger('mission_id');
+            $table->foreign('mission_id')
+                ->references('id')
+                ->on('missions')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 
