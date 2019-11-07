@@ -17,4 +17,9 @@ class Mission extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function notes()
+    {
+        return $this->belongsToMany('App\Note');
+    }
 }
