@@ -22,4 +22,9 @@ class Mission extends Model
     {
         return $this->hasMany('App\Note');
     }
+
+    public function fraisKms()
+    {
+        return $this->hasMany('App\FraisKm');
+    }
 }

@@ -59,23 +59,25 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 m-auto">
                 <div class="card">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <th>
-                                    {{ __('Image') }}
-                                </th>
-                                <th>
-                                    {{ __('Title') }}
-                                </th>
-                                <th>
-                                    {{ __('TTC') }}
-                                </th>
-                            </thead>
-                            <tbody>
-                                @if (count($mission->notes) === 1)
+                    <div class="card-body">
+                        <div class="table-responsive">
+
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        {{ __('Image') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Title') }}
+                                    </th>
+                                    <th>
+                                        {{ __('TTC') }}
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    @if (count($mission->notes) === 1)
                                     @foreach($mission->notes as $note)
                                     <tr>
                                         <td>
@@ -89,15 +91,64 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                @else
+                                    @else
                                     <tr class="text-center">
                                         <td colspan="3">
                                             <strong>{{ __('No data') }}</strong>
                                         </td>
                                     </tr>
-                                @endif
-                            </tbody>
-                        </table>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 m-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        {{ __('Image') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Title') }}
+                                    </th>
+                                    <th>
+                                        {{ __('TTC') }}
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    @if (count($mission->fraisKms) === 1)
+                                    @foreach($mission->fraisKms as $fraisKm)
+                                    <tr>
+                                        <td>
+                                            <strong>{{ __('Image') }}</strong>
+                                        </td>
+                                        <td>
+                                            <strong>{{ $fraisKm->title }}</strong>
+                                        </td>
+                                        <td>
+                                            <strong>{{ __('TTC') }}</strong>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @else
+                                    <tr class="text-center">
+                                        <td colspan="3">
+                                            <strong>{{ __('No data') }}</strong>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,6 +164,5 @@
 
     </div>
 </div>
-
 
 @endsection

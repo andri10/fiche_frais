@@ -22,6 +22,7 @@ class CreateFraisKmsTable extends Migration
             $table->longText('description');
             $table->date('start_at');
             $table->date('arrival_at');
+            $table->text('image');
             $table->unsignedBigInteger('mission_id');
             $table->foreign('mission_id')
                 ->references('id')
