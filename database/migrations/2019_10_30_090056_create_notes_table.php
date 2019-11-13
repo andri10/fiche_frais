@@ -17,12 +17,12 @@ class CreateNotesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('title');
-            $table->date('created_at');
             $table->string('pays');
             $table->float('ttc', 8, 2);
             $table->string('tva');
             $table->longText('description');
-            $table->text('image');
+            $table->string('image');
+            $table->timestamps();
             $table->unsignedBigInteger('mission_id');
             $table->foreign('mission_id')
                 ->references('id')

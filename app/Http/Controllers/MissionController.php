@@ -42,7 +42,7 @@ class MissionController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'user_id' => Auth::user()->id,
-            ]);
+        ]);
 
         return redirect()->route('missions.index')->withStatus(__('Missions successfully created.'));
     }
