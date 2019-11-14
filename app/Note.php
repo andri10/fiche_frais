@@ -12,6 +12,6 @@ class Note extends Model
 
     public function mission()
     {
-        return $this->hasbelongsTo('App\Mission');
+        return $this->belongsTo('App\Mission');
     }
 }

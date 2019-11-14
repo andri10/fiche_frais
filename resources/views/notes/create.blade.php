@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="{{ route('notes.store') }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
+                <form method="post" action="{{ route('missions.storeNote', $mission) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     @method('post')
 
@@ -68,7 +68,7 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Description') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
-                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="description" id="input-name" type="text" placeholder="{{ __('Description') }}" value="{{ old('description') }}" required="true" aria-required="true" />
+                                        <input class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" id="input-name" type="text" placeholder="{{ __('Description') }}" value="{{ old('description') }}" required="true" aria-required="true" />
                                         @if ($errors->has('description'))
                                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('description') }}</span>
                                         @endif
@@ -79,7 +79,9 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
                                 <div class="col-sm-7">
                                     <div>
-                                        <input id="file-upload" type="file" name="image" accept="image/*" onchange="readURL(this);">
+                                        <!--                                         <input id="file-upload" type="file" name="image" accept="image/*" onchange="readURL(this);">
+ -->
+                                        <input class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" id="input-name" type="text" placeholder="{{ __('Description') }}" value="{{ old('description') }}" required="true" aria-required="true" />
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
                                     </div>
                                 </div>

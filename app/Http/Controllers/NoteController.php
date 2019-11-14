@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use Illuminate\Http\Request;
+use App\Http\Requests\NoteRequest;
+use App\Mission;
 
 class NoteController extends Controller
 {
@@ -22,9 +24,9 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Mission $mission)
     {
-        return view('notes.create');
+        return view('notes.create', compact('mission'));
     }
 
     /**
@@ -33,31 +35,19 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NoteRequest $request, Mission $mission)
     {
-        $request->validate([
-            'title'    =>  'required',
-            'pays'     =>  'required',
-            'ttc'     =>  'required',
-            'tva'     =>  'required',
-            'description'     =>  'required',
-            'image'         =>  'image|max:2048'
+        dd($request->$mission);
+
+        Note::create([
+            'title' => $request->input('title'),
+            'pays' => $request->input('pays'),
+            'ttc' => $request->input('ttc'),
+            'tva' => $request->input('tva'),
+            'description' => $request->input('description'),
+            'image' => $request->input('image'),
+            'mission_id' => $request->$mission,
         ]);
-
-        $image = $request->file('image');
-
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $new_name);
-        $data = array(
-            'title'       =>   $request->title,
-            'pays'        =>   $request->pays,
-            'ttc'        =>      $request->ttc,
-            'tva'        =>       $request->tva,
-            'description'        =>      $request->description,
-            'image'            =>   $new_name
-        );
-
-        Note::create($data);
 
         return back()->withSuccess('Great! Image has been successfully uploaded.');
     }

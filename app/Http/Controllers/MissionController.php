@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Note;
 use App\Mission;
+use App\Http\Requests\NoteRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MissionRequest;
 
@@ -30,6 +32,11 @@ class MissionController extends Controller
         return view('missions.create');
     }
 
+    public function createNote(Mission $mission)
+    {
+        return view('notes.create', compact('mission'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,6 +52,21 @@ class MissionController extends Controller
         ]);
 
         return redirect()->route('missions.index')->withStatus(__('Missions successfully created.'));
+    }
+
+    public function storeNote(NoteRequest $request, Mission $mission)
+    {
+        Note::create([
+            'title' => $request->input('title'),
+            'pays' => $request->input('pays'),
+            'ttc' => $request->input('ttc'),
+            'tva' => $request->input('tva'),
+            'description' => $request->input('description'),
+            'image' => $request->input('image'),
+            'mission_id' => $mission->id,
+        ]);
+
+        return back()->withSuccess('Great! Image has been successfully uploaded.');
     }
 
     /**

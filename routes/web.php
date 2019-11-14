@@ -18,8 +18,8 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('missions', 'MissionController');
-
-Route::resource('notes', 'NoteController');
+Route::get('missions/{mission}/create', 'MissionController@createNote')->name('missions.createNote');
+Route::post('missions/{mission}/create', 'MissionController@storeNote')->name('missions.storeNote');
 
 Auth::routes();
 

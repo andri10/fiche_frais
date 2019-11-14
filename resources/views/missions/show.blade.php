@@ -156,7 +156,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('notes.create') }}">Add Note</a>
+                <a href="{{ route('missions.createNote', $mission) }}">Add Note</a>
                 <br>
                 <a href="">Add Frais kilométriques</a>
             </div>
