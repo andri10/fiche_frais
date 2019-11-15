@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Note;
+use App\Mission;
 use Illuminate\Http\Request;
 use App\Http\Requests\NoteRequest;
-use App\Mission;
 
 class NoteController extends Controller
 {
@@ -37,8 +37,6 @@ class NoteController extends Controller
      */
     public function store(NoteRequest $request, Mission $mission)
     {
-        dd($request->$mission);
-
         Note::create([
             'title' => $request->input('title'),
             'pays' => $request->input('pays'),
@@ -46,7 +44,7 @@ class NoteController extends Controller
             'tva' => $request->input('tva'),
             'description' => $request->input('description'),
             'image' => $request->input('image'),
-            'mission_id' => $request->$mission,
+            'mission_id' => $mission->id,
         ]);
 
         return back()->withSuccess('Great! Image has been successfully uploaded.');

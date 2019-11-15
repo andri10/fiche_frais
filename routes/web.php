@@ -18,8 +18,12 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('missions', 'MissionController');
-Route::get('missions/{mission}/create', 'MissionController@createNote')->name('missions.createNote');
-Route::post('missions/{mission}/create', 'MissionController@storeNote')->name('missions.storeNote');
+
+Route::get('missions/{mission}/create-note', 'NoteController@create')->name('notes.create');
+Route::post('missions/{mission}/create-note', 'NoteController@store')->name('notes.store');
+
+Route::get('missions/{mission}/create-fraiskm', 'FraisKmController@create')->name('fraiskms.create');
+Route::post('missions/{mission}/create-fraiskm', 'FraisKmController@store')->name('fraiskms.store');
 
 Auth::routes();
 

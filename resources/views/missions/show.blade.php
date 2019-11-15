@@ -77,7 +77,7 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    @if (count($mission->notes) === 1)
+                                    @if (count($mission->notes) >= 1)
                                     @foreach($mission->notes as $note)
                                     <tr>
                                         <td>
@@ -125,7 +125,7 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    @if (count($mission->fraisKms) === 1)
+                                    @if (count($mission->fraisKms) >= 1)
                                     @foreach($mission->fraisKms as $fraisKm)
                                     <tr>
                                         <td>
@@ -156,7 +156,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('missions.createNote', $mission) }}">Add Note</a>
+                <a href="{{ route('notes.create', $mission) }}">Add Note</a>
                 <br>
                 <a href="">Add Frais kilométriques</a>
             </div>

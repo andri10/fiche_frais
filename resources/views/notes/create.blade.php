@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="{{ route('missions.storeNote', $mission) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
+                <form method="post" action="{{ route('notes.store', $mission) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     @method('post')
 
