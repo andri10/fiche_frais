@@ -20,8 +20,8 @@ class CreateFraisKmsTable extends Migration
             $table->float('trajets');
             $table->string('title');
             $table->longText('description');
-            $table->date('start_at');
-            $table->date('arrival_at');
+            $table->date('start');
+            $table->date('arrival');
             $table->text('image');
             $table->unsignedBigInteger('mission_id');
             $table->foreign('mission_id')

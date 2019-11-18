@@ -79,10 +79,9 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
                                 <div class="col-sm-7">
                                     <div>
-                                        <!--                                         <input id="file-upload" type="file" name="image" accept="image/*" onchange="readURL(this);">
- -->
-                                        <input class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" id="input-name" type="text" placeholder="{{ __('Description') }}" value="{{ old('description') }}" required="true" aria-required="true" />
-                                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                                        <input id="file-upload" type="file" name="image" accept="image/*" onchange="readURL(this);">
+<!--                                         <input class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" id="input-name" type="text" placeholder="{{ __('Description') }}" value="{{ old('description') }}" required="true" aria-required="true" />
+ -->                                        <span class="text-danger">{{ $errors->first('image') }}</span>
                                     </div>
                                 </div>
                             </div>

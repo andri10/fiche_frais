@@ -81,7 +81,7 @@
                                     @foreach($mission->notes as $note)
                                     <tr>
                                         <td>
-                                            <strong>{{ $note->image }}</strong>
+                                            <img src="{{ asset('image/notes/' . $note->image) }}" width="50px" height="50px" alt="Image">
                                         </td>
                                         <td>
                                             <strong>{{ $note->title }}</strong>
@@ -121,7 +121,7 @@
                                         {{ __('Title') }}
                                     </th>
                                     <th>
-                                        {{ __('TTC') }}
+                                        {{ __('KM') }}
                                     </th>
                                 </thead>
                                 <tbody>
@@ -129,13 +129,13 @@
                                     @foreach($mission->fraisKms as $fraisKm)
                                     <tr>
                                         <td>
-                                            <strong>{{ __('Image') }}</strong>
+                                            <img src="{{ asset('image/fraisKms/' . $fraisKm->image) }}" width="50px" height="50px" alt="Image">
                                         </td>
                                         <td>
                                             <strong>{{ $fraisKm->title }}</strong>
                                         </td>
                                         <td>
-                                            <strong>{{ __('TTC') }}</strong>
+                                            <strong>{{ $fraisKm->trajets }} km</strong>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -158,7 +158,7 @@
             <div class="col-md-12">
                 <a href="{{ route('notes.create', $mission) }}">Add Note</a>
                 <br>
-                <a href="">Add Frais kilométriques</a>
+                <a href="{{ route('fraiskms.create', $mission) }}">Add Frais kilométriques</a>
             </div>
         </div>
 

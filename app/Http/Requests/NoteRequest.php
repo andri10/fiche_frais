@@ -24,6 +24,9 @@ class NoteRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ttc' => 'required|numeric',
+            /* 'tva' => 'required|numeric', */
         ];
     }
 }

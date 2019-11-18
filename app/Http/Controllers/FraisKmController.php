@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FraisKm;
 use App\Mission;
 use Illuminate\Http\Request;
 use App\Http\Requests\FraisKmRequest;
@@ -15,7 +16,7 @@ class FraisKmController extends Controller
      */
     public function create(Mission $mission)
     {
-        return view('fraisKm.create', compact('mission'));
+        return view('fraisKms.create', compact('mission'));
     }
 
     /**
@@ -26,15 +27,16 @@ class FraisKmController extends Controller
      */
     public function store(FraisKmRequest $request, Mission $mission)
     {
-        Note::create([
+
+        FraisKm::create([
             'title' => $request->input('title'),
             'depart' => $request->input('depart'),
             'arrivee' => $request->input('arrivee'),
-            'trajet' => $request->input('trajet'),
+            'trajets' => $request->input('trajets'),
             'description' => $request->input('description'),
-            'start' => $request->input('start'),
-            'arrival' => $request->input('arrival'),
-            'image' => $request->input('image'),
+            'start' => now(),
+            'arrival' => now(),
+            'image' => "default.svg",
             'mission_id' => $mission->id,
         ]);
 

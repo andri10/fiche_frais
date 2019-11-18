@@ -17,40 +17,52 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
-                    <i class="material-icons">person</i>
-                    <p>{{ __('Users') }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="laravelExample">
-                    <ul class="nav">
-                        <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-                            <a class="nav-link" href="{{ route('profile.edit') }}">
-                                <span class="sidebar-mini"> UP </span>
-                                <span class="sidebar-normal">{{ __('User profile') }} </span>
-                            </a>
-                        </li>
-                        <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-                            <a class="nav-link" href="{{ route('user.index') }}">
-                                <span class="sidebar-mini"> UM </span>
-                                <span class="sidebar-normal"> {{ __('User Management') }} </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             <li class="nav-item{{ $activePage == 'missions' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('missions.index') }}">
                     <i class="material-icons">card_travel</i>
                     <p>{{ __('Missions') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'ficheFrais' ? ' active' : '' }}">
                 <a class="nav-link" href="#">
                     <i class="material-icons">library_books</i>
-                    <p>{{ __('Lorem') }}</p>
+                    <p>{{ __('Fiche Frais') }}</p>
+                </a>
+            </li>
+            <li class="nav-item {{ ($activePage == 'user-management' || $activePage == 'add-user') ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
+                    <i class="material-icons">build</i>
+                    <p>{{ __('Administrateur') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="laravelExample">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('user.index') }}">
+                                <span class="sidebar-mini"> UP </span>
+                                <span class="sidebar-normal">{{ __('User Management') }} </span>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'add-user' ? ' active' : '' }}">
+                            <a class="nav-link" href="#">
+                                <span class="sidebar-mini"> AU </span>
+                                <span class="sidebar-normal">{{ __('Add User') }} </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item{{ $activePage == 'comptable' ? ' active' : '' }}">
+                <a class="nav-link" href="#">
+                    <i class="material-icons">assessment</i>
+                    <p>{{ __('Comptable') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('profile.edit') }}">
+                    <i class="material-icons">person</i>
+                    <p>{{ __('User profile') }}</p>
                 </a>
             </li>
         </ul>

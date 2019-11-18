@@ -13,18 +13,18 @@ class MissionsTableSeeder extends Seeder
     {
         DB::table('missions')->insert([
             'name' => 'Mission 01',
-            'description' => 'lorem ipsum',
+            'description' => 'Lorem ipsum',
             'created_at' => now(),
             'updated_at' => now(),
             'user_id' => 1
         ]);
 
         DB::table('missions')->insert([
-            'name' => 'Mission 01',
+            'name' => 'Mission 02',
             'description' => 'lorem ipsum',
             'created_at' => now(),
             'updated_at' => now(),
-            'user_id' => 2
+            'user_id' => 1
         ]);
     }
 }

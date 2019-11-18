@@ -37,15 +37,27 @@ class NoteController extends Controller
      */
     public function store(NoteRequest $request, Mission $mission)
     {
-        Note::create([
-            'title' => $request->input('title'),
-            'pays' => $request->input('pays'),
-            'ttc' => $request->input('ttc'),
-            'tva' => $request->input('tva'),
-            'description' => $request->input('description'),
-            'image' => $request->input('image'),
-            'mission_id' => $mission->id,
-        ]);
+
+        $note = new Note();
+
+        $note->title = $request->input('title');
+        $note->pays = $request->input('pays');
+        $note->ttc = $request->input('ttc');
+        $note->tva = $request->input('tva');
+        $note->description = $request->input('description');
+        $note->mission_id = $mission->id;
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('image/notes', $filename);
+            $note->image = $filename;
+        } else {
+            $note->image = 'default.svg';
+        }
+
+        $note->save();
 
         return back()->withSuccess('Great! Image has been successfully uploaded.');
     }
