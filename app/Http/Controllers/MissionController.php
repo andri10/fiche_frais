@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Note;
 use App\Mission;
-use App\Http\Requests\NoteRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MissionRequest;
 

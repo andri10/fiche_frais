@@ -64,7 +64,7 @@
     <!-- Library for adding dinamically elements -->
     <script src="{{ asset('material') }}/js/plugins/arrive.min.js"></script>
     <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ0pC9BTZGRt6tImUKjWIM8YVcD7dxte0'"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ0pC9BTZGRt6tImUKjWIM8YVcD7dxte0"></script>
     <!-- Chartist JS -->
     <script src="{{ asset('material') }}/js/plugins/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
