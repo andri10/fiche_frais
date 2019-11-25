@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Note;
-use App\Mission;
 use Illuminate\Http\Request;
-use App\Http\Requests\NoteRequest;
 
-class NoteController extends Controller
+class ComptableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +13,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return view('notes.index');
+        return view('comptable.index');
     }
 
     /**
@@ -24,9 +21,9 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Mission $mission)
+    public function create()
     {
-        return view('notes.create', compact('mission'));
+        //
     }
 
     /**
@@ -35,31 +32,9 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NoteRequest $request, Mission $mission)
+    public function store(Request $request)
     {
-
-        $note = new Note();
-
-        $note->title = $request->input('title');
-        $note->pays = $request->input('pays');
-        $note->ttc = $request->input('ttc');
-        $note->tva = $request->input('tva');
-        $note->description = $request->input('description');
-        $note->mission_id = $mission->id;
-
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('image/notes', $filename);
-            $note->image = $filename;
-        } else {
-            $note->image = 'default.svg';
-        }
-
-        $note->save();
-
-        return back()->withSuccess('Great! Image has been successfully uploaded.');
+        //
     }
 
     /**

@@ -23,10 +23,10 @@
                     <p>{{ __('Missions') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ $activePage == 'ficheFrais' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'notes' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('notes.index') }}">
                     <i class="material-icons">library_books</i>
-                    <p>{{ __('Fiche Frais') }}</p>
+                    <p>{{ __('Notes') }}</p>
                 </a>
             </li>
             <li class="nav-item {{ ($activePage == 'user-management' || $activePage == 'add-user') ? ' active' : '' }}">
@@ -53,12 +53,14 @@
                     </ul>
                 </div>
             </li>
+            @if (Auth::user()->role === 'comptable')
             <li class="nav-item{{ $activePage == 'comptable' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('comptable.index') }}">
                     <i class="material-icons">assessment</i>
                     <p>{{ __('Comptable') }}</p>
                 </a>
             </li>
+            @endif
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('profile.edit') }}">
                     <i class="material-icons">person</i>

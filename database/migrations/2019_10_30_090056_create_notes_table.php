@@ -23,7 +23,7 @@ class CreateNotesTable extends Migration
             $table->longText('description');
             $table->string('image');
             $table->timestamps();
-            $table->unsignedBigInteger('mission_id');
+            $table->unsignedBigInteger('mission_id')->nullable()->unsigned();
             $table->foreign('mission_id')
                 ->references('id')
                 ->on('missions')

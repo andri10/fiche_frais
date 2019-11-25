@@ -23,7 +23,7 @@ class CreateFraisKmsTable extends Migration
             $table->date('start');
             $table->date('arrival');
             $table->text('image');
-            $table->unsignedBigInteger('mission_id');
+            $table->unsignedBigInteger('mission_id')->nullable()->unsigned();
             $table->foreign('mission_id')
                 ->references('id')
                 ->on('missions')
