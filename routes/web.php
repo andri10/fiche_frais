@@ -17,25 +17,34 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('missions', 'MissionController');
-
-Route::get('missions/{mission}/create-note', 'NoteController@create')->name('notes.create');
-Route::post('missions/{mission}/create-note', 'NoteController@store')->name('notes.store');
-
-Route::get('missions/{mission}/create-fraiskm', 'FraisKmController@create')->name('fraiskms.create');
-Route::post('missions/{mission}/create-fraiskm', 'FraisKmController@store')->name('fraiskms.store');
-
-Route::resource('notes', 'NoteController');
-Route::resource('comptable', 'ComptableController')->middleware('roleComptable');
-
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'UserController', ['except' => ['show', 'create', 'store']]);
+	Route::resource('admin', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+    /* Gestion Mission */
+    Route::resource('missions', 'MissionController');
+
+    /* Gestion Note */
+    Route::resource('notes', 'NoteController');
+
+    Route::get('missions/{mission}/create-note', 'NoteController@create')->name('notes.create');
+    Route::post('missions/{mission}/create-note', 'NoteController@store')->name('notes.store');
+
+    Route::get('missions/{mission}/create-fraiskm', 'FraisKmController@create')->name('fraisKms.create');
+    Route::post('missions/{mission}/create-fraiskm', 'FraisKmController@store')->name('fraisKms.store');
+
+    Route::get('note/create', 'NoteController@createNote')->name('note.create');
+    Route::post('note/create', 'NoteController@storeNote')->name('note.store');
+
+    Route::get('frais-km/create', 'NoteController@createFraisKM')->name('fraisKM.create');
+    Route::post('frais-km/create', 'NoteController@storeFraisKM')->name('fraisKM.store');
+
+
+    Route::resource('comptable', 'ComptableController')->middleware('roleComptable');
 });
 
-Route::get('/admin', 'UserController@create')->name('admin.create');
-Route::post('/admin', 'UserController@store')->name('admin.store');
+

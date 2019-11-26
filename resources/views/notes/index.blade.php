@@ -25,7 +25,7 @@
                         @endif
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="{{ route('missions.create') }}" class="btn btn-sm btn-primary">{{ __('+ Add note') }}</a>
+                                <a href="{{ route('note.create') }}" class="btn btn-sm btn-primary">{{ __('+ Add note') }}</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -42,16 +42,29 @@
                                     </th>
                                 </thead>
                                 <tbody>
+                                    @if (count($notes) >= 1)
+                                    @foreach($notes as $note)
+                                    @if (empty($note->mission_id))
                                     <tr>
                                         <td>
+                                            <img src="{{ asset('image/notes/' . $note->image) }}" width="50px" height="50px" alt="Image">
                                         </td>
                                         <td>
+                                            <strong>{{ $note->title }}</strong>
                                         </td>
                                         <td>
-                                        </td>
-                                        <td>
+                                            <strong>{{ $note->ttc }}</strong>
                                         </td>
                                     </tr>
+                                    @endif
+                                    @endforeach
+                                    @else
+                                    <tr class="text-center">
+                                        <td colspan="3">
+                                            <strong>{{ __('No data') }}</strong>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -64,8 +77,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">{{ __('Mes frais de déplacement') }}</h4>
-                        <p class="card-category"> {{ __('Here you can manage frais de déplacement') }}</p>
+                        <h4 class="card-title ">{{ __('Mes frais kilométriques') }}</h4>
+                        <p class="card-category"> {{ __('Here you can manage frais km') }}</p>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -82,7 +95,7 @@
                         @endif
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="{{ route('missions.create') }}" class="btn btn-sm btn-primary">{{ __('+ Add note') }}</a>
+                                <a href="#" class="btn btn-sm btn-primary">{{ __('+ Add frais km') }}</a>
                             </div>
                         </div>
                         <div class="table-responsive">

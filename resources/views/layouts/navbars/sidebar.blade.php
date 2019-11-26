@@ -29,6 +29,7 @@
                     <p>{{ __('Notes') }}</p>
                 </a>
             </li>
+            @if (Auth::user()->role === 'admin')
             <li class="nav-item {{ ($activePage == 'user-management' || $activePage == 'add-user') ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
                     <i class="material-icons">build</i>
@@ -39,7 +40,7 @@
                 <div class="collapse" id="laravelExample">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-                            <a class="nav-link" href="{{ route('user.index') }}">
+                            <a class="nav-link" href="{{ route('admin.index') }}">
                                 <span class="sidebar-mini"> UP </span>
                                 <span class="sidebar-normal">{{ __('User Management') }} </span>
                             </a>
@@ -53,6 +54,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
             @if (Auth::user()->role === 'comptable')
             <li class="nav-item{{ $activePage == 'comptable' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('comptable.index') }}">

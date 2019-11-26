@@ -20,17 +20,29 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('secret'),
             'created_at' => now(),
             'updated_at' => now(),
-            'role' => 'comptable'
+            'role' => 'admin'
         ]);
 
         DB::table('users')->insert([
             'name' => 'max',
-            'first_name' => 'dax',
+            'first_name' => 'dik',
             'email' => 'max@mail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
+            'role' => 'comptable'
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'dax',
+            'first_name' => 'set',
+            'email' => 'dax@mail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

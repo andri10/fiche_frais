@@ -18,6 +18,10 @@ class FraisKmController extends Controller
     {
         return view('fraisKms.create', compact('mission'));
     }
+    public function createFraisKM()
+    {
+        return view('fraisKms.create');
+    }
 
     /**
      * Store a newly created resource in storage.

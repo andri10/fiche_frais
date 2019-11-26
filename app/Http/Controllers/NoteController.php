@@ -16,7 +16,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return view('notes.index');
+        $notes = Note::all();
+        return view('notes.index', compact('notes'));
     }
 
     /**
@@ -27,6 +28,10 @@ class NoteController extends Controller
     public function create(Mission $mission)
     {
         return view('notes.create', compact('mission'));
+    }
+    public function createNote()
+    {
+        return view('notes.createNote');
     }
 
     /**
@@ -46,6 +51,32 @@ class NoteController extends Controller
         $note->tva = $request->input('tva');
         $note->description = $request->input('description');
         $note->mission_id = $mission->id;
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('image/notes', $filename);
+            $note->image = $filename;
+        } else {
+            $note->image = 'default.svg';
+        }
+
+        $note->save();
+
+        return back()->withSuccess('Great! Image has been successfully uploaded.');
+    }
+
+    public function storeNote(NoteRequest $request, Mission $mission)
+    {
+
+        $note = new Note();
+
+        $note->title = $request->input('title');
+        $note->pays = $request->input('pays');
+        $note->ttc = $request->input('ttc');
+        $note->tva = $request->input('tva');
+        $note->description = $request->input('description');
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');

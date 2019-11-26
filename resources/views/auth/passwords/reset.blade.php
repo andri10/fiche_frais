@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'reset', 'title' => __('PDDT')])
+@extends('layouts.app', ['activePage' => 'reset', 'title' => __('Partenariats pour le Développement Durable au Tchad')])
 
 @section('content')
 <div class="container">
