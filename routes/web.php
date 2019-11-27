@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('admin', 'UserController', ['except' => ['show']]);
+	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -40,8 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('note/create', 'NoteController@createNote')->name('note.create');
     Route::post('note/create', 'NoteController@storeNote')->name('note.store');
 
-    Route::get('frais-km/create', 'NoteController@createFraisKM')->name('fraisKM.create');
-    Route::post('frais-km/create', 'NoteController@storeFraisKM')->name('fraisKM.store');
+    Route::get('frais-km/create', 'NoteController@createFraisKM')->name('fraisKm.create');
+    Route::post('frais-km/create', 'NoteController@storeFraisKM')->name('fraisKm.store');
 
 
     Route::resource('comptable', 'ComptableController')->middleware('roleComptable');

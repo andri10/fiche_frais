@@ -158,7 +158,7 @@
             <div class="col-md-12">
                 <a href="{{ route('notes.create', $mission) }}">Add Note</a>
                 <br>
-                <a href="{{ route('fraiskms.create', $mission) }}">Add Frais kilométriques</a>
+                <a href="{{ route('fraisKms.create', $mission) }}">Add Frais kilométriques</a>
             </div>
         </div>
 

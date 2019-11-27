@@ -17,6 +17,7 @@ class MissionController extends Controller
     {
         $missions = Auth::user()->missions;
 
+
         return view('missions.index', compact('missions'));
     }
 

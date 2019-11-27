@@ -42,16 +42,37 @@
                                     </th>
                                 </thead>
                                 <tbody>
+                                    @if (count($e) >= 1)
+                                    @foreach ($e as $note)
                                     <tr>
                                         <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
                                         </td>
                                         <td>
+                                            <img src="{{ asset('image/notes/' . $note->image) }}" width="50px" height="50px" alt="Image">
                                         </td>
                                         <td>
+                                            <strong>{{ $note->tittre }}</strong>
                                         </td>
                                         <td>
+                                            <strong>{{ $note->ttc }}</strong>
                                         </td>
                                     </tr>
+                                    @endforeach
+                                    @else
+                                    <tr class="text-center">
+                                        <td colspan="3">
+                                            <strong>{{ __('No data') }}</strong>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

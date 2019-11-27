@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Note;
+use App\FraisKm;
 use Illuminate\Http\Request;
 
 class ComptableController extends Controller
@@ -13,7 +15,20 @@ class ComptableController extends Controller
      */
     public function index()
     {
-        return view('comptable.index');
+        $notes = Note::all();
+        $fraisKms = FraisKm::all();
+
+        foreach ($notes as $note) {
+            $c[] = $note;
+        }
+
+        foreach ($fraisKms as $fraisKm) {
+            $d[] = $fraisKm;
+        }
+
+        $e = array_merge($c, $d);
+
+        return view('comptable.index', compact('e'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Note;
+use App\FraisKm;
 use App\Mission;
 use Illuminate\Http\Request;
 use App\Http\Requests\NoteRequest;
@@ -17,7 +18,21 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::all();
-        return view('notes.index', compact('notes'));
+        $fraisKms = FraisKm::all();
+
+        foreach ($notes as $note) {
+            $c[] = $note;
+        }
+
+        foreach ($fraisKms as $fraisKm) {
+            $d[] = $fraisKm;
+        }
+
+        $e = array_merge($c, $d);
+
+        /* dd($e); */
+
+        return view('notes.index', compact('e'));
     }
 
     /**
