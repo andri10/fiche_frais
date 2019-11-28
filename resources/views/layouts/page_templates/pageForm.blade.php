@@ -311,6 +311,8 @@
                   </div>
                 </div>
               </div>
+
+              
               <div class="row">
                 <label class="col-sm-2 col-form-label">Column sizing</label>
                 <div class="col-sm-10">

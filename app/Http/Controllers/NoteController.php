@@ -28,11 +28,11 @@ class NoteController extends Controller
             $d[] = $fraisKm;
         }
 
-        $e = array_merge($c, $d);
+        $s = array_merge($c, $d);
 
         /* dd($e); */
 
-        return view('notes.index', compact('e'));
+        return view('notes.index', compact('s'));
     }
 
     /**
@@ -63,7 +63,6 @@ class NoteController extends Controller
         $note->title = $request->input('title');
         $note->pays = $request->input('pays');
         $note->ttc = $request->input('ttc');
-        $note->tva = $request->input('tva');
         $note->description = $request->input('description');
         $note->mission_id = $mission->id;
 
@@ -71,15 +70,15 @@ class NoteController extends Controller
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('image/notes', $filename);
+            $file->move('image/depenses', $filename);
             $note->image = $filename;
         } else {
-            $note->image = 'default.svg';
+            $note->image = 'defaultNote.svg';
         }
 
         $note->save();
 
-        return back()->withSuccess('Great! Image has been successfully uploaded.');
+        return back()->withSuccess('Great!');
     }
 
     public function storeNote(NoteRequest $request, Mission $mission)
@@ -92,6 +91,8 @@ class NoteController extends Controller
         $note->ttc = $request->input('ttc');
         $note->tva = $request->input('tva');
         $note->description = $request->input('description');
+        $note->created_at = now();
+
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');

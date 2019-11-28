@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Note;
 use App\Mission;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MissionRequest;
@@ -56,7 +57,26 @@ class MissionController extends Controller
      */
     public function show(Mission $mission)
     {
-        return view('missions.show', compact('mission'));
+
+        if (count($mission->notes) != 0) {
+            foreach ($mission->notes as $note) {
+                $a[] = $note;
+            }
+        } else {
+            $a[] = "No data";
+        }
+        
+        if (count($mission->fraisKms) != 0) {
+            foreach ($mission->fraisKms as $fraisKm) {
+                $b[] = $fraisKm;
+            }
+        } else {
+            $b[] = "No data";
+        }
+
+        $s = array_merge($a, $b);
+
+        return view('missions.show', compact('mission', 's'));
     }
 
     /**

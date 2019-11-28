@@ -15,9 +15,8 @@ class NotesTableSeeder extends Seeder
             'title' => 'Déjeuner',
             'pays' => 'FRANCE',
             'ttc' => 75,
-            'tva' => 10,
             'description' => 'Déjeuner avec l\'équipe',
-            'image' => 'default.svg',
+            'image' => 'defaultNote.svg',
             'created_at' => now(),
             'updated_at' => now(),
             'mission_id' => '1'
@@ -27,9 +26,8 @@ class NotesTableSeeder extends Seeder
             'title' => 'Hôtel',
             'pays' => 'FRANCE',
             'ttc' => 50,
-            'tva' => 0,
             'description' => 'Héberger à l\'hôtel lors du déplacement à Paris',
-            'image' => 'default.svg',
+            'image' => 'defaultNote.svg',
             'created_at' => now(),
             'updated_at' => now(),
             'mission_id' => '1'

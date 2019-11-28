@@ -26,9 +26,11 @@ class ComptableController extends Controller
             $d[] = $fraisKm;
         }
 
-        $e = array_merge($c, $d);
+        $s = array_merge($c, $d);
 
-        return view('comptable.index', compact('e'));
+        /* dd($e); */
+
+        return view('comptable.index', compact('s'));
     }
 
     /**

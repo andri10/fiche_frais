@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="{{ route('fraiskms.store', $mission) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
+                <form method="post" action="{{ route('fraisKms.store', $mission) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     @method('post')
 
@@ -24,7 +24,7 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Départ') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('depart') ? ' has-danger' : '' }}">
-                                        <input class="form-control{{ $errors->has('depart') ? ' is-invalid' : '' }}" name="depart" id="input-name" type="text" placeholder="{{ __(' ') }}" value="{{ old('depart') }}" required="true" aria-required="true" />
+                                        <input class="form-control{{ $errors->has('depart') ? ' is-invalid' : '' }}" name="depart" id="input-name" type="text" placeholder="{{ __('Départ') }}" value="{{ old('depart') }}" required="true" aria-required="true" />
                                         @if ($errors->has('depart'))
                                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('depart') }}</span>
                                         @endif
@@ -35,7 +35,7 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Arrivée') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('arrivee') ? ' has-danger' : '' }}">
-                                        <input class="form-control{{ $errors->has('arrivee') ? ' is-invalid' : '' }}" name="arrivee" id="input-name" type="text" placeholder="{{ __(' ') }}" value="{{ old('arrivee') }}" required="true" aria-required="true" />
+                                        <input class="form-control{{ $errors->has('arrivee') ? ' is-invalid' : '' }}" name="arrivee" id="input-name" type="text" placeholder="{{ __('Arrivée') }}" value="{{ old('arrivee') }}" required="true" aria-required="true" />
                                         @if ($errors->has('arrivee'))
                                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('arrivee') }}</span>
                                         @endif
@@ -47,6 +47,17 @@
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('trajets') ? ' has-danger' : '' }}">
                                         <input class="form-control{{ $errors->has('trajets') ? ' is-invalid' : '' }}" name="trajets" id="input-name" type="text" placeholder="{{ __('Trajets') }}" value="{{ old('trajets') }}" required="true" aria-required="true" />
+                                        @if ($errors->has('trajets'))
+                                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('trajets') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">{{ __('TTC') }}</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group{{ $errors->has('ttc') ? ' has-danger' : '' }}">
+                                        <input class="form-control{{ $errors->has('ttc') ? ' is-invalid' : '' }}" name="ttc" id="input-name" type="text" placeholder="{{ __('TTC') }}" value="{{ old('ttc') }}" required="true" aria-required="true" />
                                         @if ($errors->has('trajets'))
                                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('trajets') }}</span>
                                         @endif

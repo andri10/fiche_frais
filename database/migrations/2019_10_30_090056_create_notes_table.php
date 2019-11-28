@@ -15,11 +15,9 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->string('title');
             $table->string('pays');
             $table->float('ttc', 8, 2);
-            $table->string('tva');
             $table->longText('description');
             $table->string('image');
             $table->timestamps();

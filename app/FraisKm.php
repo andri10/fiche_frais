@@ -9,7 +9,7 @@ class FraisKm extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'depart', 'arrivee', 'trajets', 'title', 'description', 'image', 'start', 'arrival', 'mission_id'
+        'depart', 'arrivee', 'trajets', 'title', 'description', 'image', 'start', 'arrival', 'mission_id', 'ttc', 'created_at'
     ];
 
     public function fraisKm()

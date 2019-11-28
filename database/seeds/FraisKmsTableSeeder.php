@@ -15,11 +15,14 @@ class FraisKmsTableSeeder extends Seeder
             'depart' => 'Strasbourg',
             'arrivee' => 'Paris',
             'trajets' => 398,
+            'ttc' => 50,
             'title' => 'Strasbourg - Paris',
             'description' => 'Déplacement en voiture pour aller à Paris',
-            'image' => 'default.svg',
+            'image' => 'defaultFraisKM.svg',
             'start' => now(),
             'arrival' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
             'mission_id' => '1'
         ]);
     }

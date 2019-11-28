@@ -4,15 +4,16 @@
 <div class="content">
     <div class="container-fluid">
 
-        <div class="alert alert-success">
-            <b> Bonjour - {{ Auth::user()->name }}</b> {{ Auth::user()->first_name }} -
-            date du jour : {{ $date->format('d-m-Y') }}
+        <div class="alert" style="background:#B0C4DE;">
+            <b> Bonjour - {{ Auth::user()->name }}</b> {{ Auth::user()->first_name }} [{{ Auth::user()->role }}]
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date : {{ $date->format('d-m-Y') }}
         </div>
 
-        <div class="row">
+        <div class="row mb-4 mt-4">
             <div class="col-6">
-                <button type="button" class="btn btn-lg btn-default">Add missions</button>
-                <button type="button" class="btn btn-lg btn-default">Add notes</button>
+                
+                <button type="button" class="btn btn-lg btn-success"><i class="material-icons">add_box</i> Add missions</button>
+                <button type="button" class="btn btn-lg btn-success"><i class="material-icons">add_box</i> Add notes</button>
             </div>
         </div>
 
@@ -88,7 +89,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-tabs card-header-primary">
+                    <div class="card-header card-header-tabs card-header-rose">
                         <div class="nav-tabs-navigation">
                             <div class="nav-tabs-wrapper">
                                 <span class="nav-tabs-title">Infos :</span>
@@ -134,7 +135,7 @@
             </div>
             <div class="col-md-5">
                 <div class="card card-chart">
-                    <div class="card-header card-header-icon card-header-danger">
+                    <div class="card-header card-header-icon card-header-success">
                         <div class="card-icon">
                             <i class="material-icons">pie_chart</i>
                         </div>

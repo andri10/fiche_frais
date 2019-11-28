@@ -29,42 +29,81 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
+
+                            <table class="table table-striped">
+                                <thead style="background:#515151; color:white">
                                     <th>
-                                        {{ __('Name') }}
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th class="text-center">
+                                        {{ __('Image') }}
                                     </th>
                                     <th>
+                                        {{ __('Title') }}
                                     </th>
                                     <th>
+                                        {{ __('Date') }}
                                     </th>
                                     <th>
+                                        {{ __('Total') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Etat') }}
+                                    </th>
+                                    <th>
+                                        {{ __('Actions') }}
                                     </th>
                                 </thead>
                                 <tbody>
-                                    @if (count($e) >= 1)
-                                    @foreach ($e as $note)
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <span class="form-check-sign">
-                                                        <span class="check"></span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <img src="{{ asset('image/notes/' . $note->image) }}" width="50px" height="50px" alt="Image">
-                                        </td>
-                                        <td>
-                                            <strong>{{ $note->tittre }}</strong>
-                                        </td>
-                                        <td>
-                                            <strong>{{ $note->ttc }}</strong>
-                                        </td>
-                                    </tr>
+                                    @if (count($s) >= 1)
+                                    @foreach($s as $note)
+
+                                        @if ($note === "No data"))
+                                        
+                                        @else
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <img src="{{ asset('image/depenses/' . $note->image) }}" width="50px" height="50px" alt="Image">
+                                            </td>
+                                            <td>
+                                                <strong>{{ $note->title }}</strong>
+                                            </td>
+                                            <td>
+                                                {{ $note->created_at }}
+                                            </td>
+                                            <td>
+                                                {{ $note->ttc }}
+                                            </td>
+                                            <td>
+                                                <strong>{{ __('Vérifier') }}</strong>
+                                            </td>
+                                            <td class="td-actions">
+                                                <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
+                                                <i class="material-icons">edit</i>
+                                                </button>
+                                                <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
+                                                <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @endif
                                     @endforeach
                                     @else
                                     <tr class="text-center">

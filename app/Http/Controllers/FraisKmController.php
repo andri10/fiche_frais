@@ -37,10 +37,12 @@ class FraisKmController extends Controller
             'depart' => $request->input('depart'),
             'arrivee' => $request->input('arrivee'),
             'trajets' => $request->input('trajets'),
+            'ttc' => $request->input('ttc'),
             'description' => $request->input('description'),
             'start' => now(),
             'arrival' => now(),
-            'image' => "default.svg",
+            'created_at' => now(),
+            'image' => "defaultFraisKM.svg",
             'mission_id' => $mission->id,
         ]);
 

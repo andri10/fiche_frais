@@ -58,4 +58,46 @@
 
     </div>
 </div>
+
+
+
+            <div class="card">
+          <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons">lock</i>
+            </div>
+            <h4 class="card-title">Change password</h4>
+          </div>
+          <div class="card-body">
+            <form method="post" action="https://material-dashboard-pro-laravel.creative-tim.com/profile/password" class="form-horizontal">
+              <input type="hidden" name="_token" value="Y6fVM0wVq6fFCiiN4gAMinFQ7jbNvtmOabmAoAal">              <input type="hidden" name="_method" value="put">
+              <div class="row">
+                <label class="col-sm-2 col-form-label" for="input-current-password">Current Password</label>
+                <div class="col-sm-7">
+                  <div class="form-group bmd-form-group">
+                    <input class="form-control" input="" type="password" name="old_password" id="input-current-password" placeholder="Current Password" value="" required="">
+                                      </div>
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label" for="input-password">New Password</label>
+                <div class="col-sm-7">
+                  <div class="form-group bmd-form-group">
+                    <input class="form-control" name="password" id="input-password" type="password" placeholder="New Password" value="" required="">
+                                      </div>
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label" for="input-password-confirmation">Confirm New Password</label>
+                <div class="col-sm-7">
+                  <div class="form-group bmd-form-group">
+                    <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="Confirm New Password" value="" required="">
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-rose pull-right">Change password</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
 @endsection
