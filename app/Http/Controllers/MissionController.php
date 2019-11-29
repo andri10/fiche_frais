@@ -18,6 +18,15 @@ class MissionController extends Controller
     {
         $missions = Auth::user()->missions;
 
+        /* foreach($missions as $mission) {
+            $a[] = $mission->notes;
+        }
+
+        foreach ($missions as $mission) {
+            $b[] = $mission->fraisKms;
+        }
+
+        dd($a); */
 
         return view('missions.index', compact('missions'));
     }
@@ -58,25 +67,32 @@ class MissionController extends Controller
     public function show(Mission $mission)
     {
 
+        $c = 0;
+        $d = 0;
+
         if (count($mission->notes) != 0) {
             foreach ($mission->notes as $note) {
                 $a[] = $note;
+                $c = $c + $note->ttc;
             }
         } else {
             $a[] = "No data";
         }
-        
+
         if (count($mission->fraisKms) != 0) {
             foreach ($mission->fraisKms as $fraisKm) {
                 $b[] = $fraisKm;
+                $d = $d + $fraisKm->ttc;
             }
         } else {
             $b[] = "No data";
         }
 
+        $e = $c + $d;
+
         $s = array_merge($a, $b);
 
-        return view('missions.show', compact('mission', 's'));
+        return view('missions.show', compact('mission', 's', 'e'));
     }
 
     /**

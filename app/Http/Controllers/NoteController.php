@@ -30,8 +30,6 @@ class NoteController extends Controller
 
         $s = array_merge($c, $d);
 
-        /* dd($e); */
-
         return view('notes.index', compact('s'));
     }
 
@@ -149,8 +147,9 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Note $note)
     {
-        //
+        $note->delete();
+        return back()->withStatus(__('Note supprimé.'));
     }
 }

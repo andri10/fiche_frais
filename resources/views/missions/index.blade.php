@@ -32,49 +32,52 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th class="text-center">
+                                        {{ __('#') }}
+                                    </th>
+                                    <th class="text-center">
                                         {{ __('Name') }}
                                     </th>
                                     <th class="text-center">
-                                        {{ __('Total') }}
+
                                     </th>
                                     <th class="text-center">
-                                        {{ __('Dépenses') }}
+
                                     </th>
                                     <th class="text-center">
-                                        {{ __('Actions') }}
+
                                     </th>
                                 </thead>
                                 <tbody>
                                     @if (count($missions) > 0)
-                                        @foreach($missions as $mission)
-                                        <tr>
-                                            <td class="text-center">
-                                                <strong>{{ $mission->name }}</strong>
-                                            </td>
-                                            <td class="text-center">
-                                                {{ __('x EUR') }}
-                                            </td>
-                                            <td class="text-center">
-                                                {{ __('x') }} 
-                                            </td>
-                                            <td class="text-center">
-                                                <form action="{{ route('missions.destroy', $mission->id) }}" method="post">
-                                                    <a class="btn btn-info" href="{{ route('missions.show', $mission->id) }}">Voir</a>
-                                                    <a class="btn btn-warning" href="{{ route('missions.edit', $mission->id) }}">Modifier</a>
-
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger data-original-title="" title="" onclick=" confirm('{{ __("Are you sure you want to delete this mission?") }}') ? this.parentElement.submit() : ''" type=" submit">Supprimer</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                    @foreach($missions as $mission)
+                                    <tr>
+                                        <td class="text-center">
+                                            <strong>{{ $mission->id }}</strong>
+                                        </td>
+                                        <td class="text-center">
+                                            <strong>{{ $mission->name }}</strong>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn btn-info" href="{{ route('missions.show', $mission->id) }}">Voir</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn btn-warning" href="{{ route('missions.edit', $mission->id) }}">Modifier</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <form action="{{ route('missions.destroy', $mission->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger data-original-title="" title="" onclick=" confirm('{{ __("Are you sure you want to delete this mission?") }}') ? this.parentElement.submit() : ''" type=" submit">Supprimer</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                     @else
-                                        <tr class="text-center">
-                                            <td colspan="4"> 
-                                                    <strong>{{ __('No data') }}</strong>
-                                                </td>
-                                        </tr>
+                                    <tr class="text-center">
+                                        <td colspan="4">
+                                            <strong>{{ __('No data') }}</strong>
+                                        </td>
+                                    </tr>
                                     @endif
                                 </tbody>
                             </table>
