@@ -1,11 +1,11 @@
-@extends('layouts.app', ['activePage' => 'missions', 'titlePage' => __('Mission Management')])
+@extends('layouts.app', ['activePage' => 'notes', 'titlePage' => __('Mission Management')])
 
 @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="{{ route('fraisKms.store', $mission) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
+                <form method="post" action="{{ route('fraisKm.store') }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     @method('post')
 
@@ -31,7 +31,7 @@
 
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <a href="{{ route('missions.show', $mission->id) }}" class="btn btn-sm btn-primary">{{ __('Retour') }}</a>
+                                    <a href="{{ route('notes.index') }}" class="btn btn-sm btn-primary">{{ __('Retour') }}</a>
                                 </div>
                             </div>
                             <div class="row">

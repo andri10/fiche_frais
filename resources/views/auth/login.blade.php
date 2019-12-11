@@ -15,7 +15,7 @@
             <h4 class="card-title"><strong>{{ __('Login') }}</strong></h4>
           </div>
           <div class="card-body">
-            <p class="card-description text-center">{{ __('Première connexion? appuyez sur ') }} <br><strong>Forgot password</strong> {{ __(' pour avoir vos ') }}<strong>identifiants</strong> </p>
+            <p class="card-description text-center">{{ __('Bienvenue sur l\'appli ') }} <br><strong>gestion des fiches de frais</strong>
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -23,7 +23,7 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email', 'andri@mail.com') }}" required>
+                <input type="email" name="email" class="form-control" placeholder="{{ __('exemple@mail.com') }}" value="{{ old('email', ' ') }}" required>
               </div>
               @if ($errors->has('email'))
                 <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
@@ -38,7 +38,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "secret" : "" }}" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Mot de passe...') }}" value="{{ !$errors->has('password') ? "" : "" }}" required>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">

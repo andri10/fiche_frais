@@ -6,14 +6,14 @@
 
         <div class="alert" style="background:#B0C4DE;">
             <b> Bonjour - {{ Auth::user()->name }}</b> {{ Auth::user()->first_name }} [{{ Auth::user()->role }}]
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date : {{ $date->format('d-m-Y') }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date : {{ $date->format('j M Y') }}
         </div>
 
         <div class="row mb-4 mt-4">
             <div class="col-6">
                 
-                <button type="button" class="btn btn-lg btn-success"><i class="material-icons">add_box</i> Add missions</button>
-                <button type="button" class="btn btn-lg btn-success"><i class="material-icons">add_box</i> Add notes</button>
+                <a href="{{ route('missions.create') }}" class="btn btn-lg btn-success"><i class="material-icons">add_box</i> Créer une mission</a>
+                <a href="{{ route('note.create') }}" class="btn btn-lg btn-success"><i class="material-icons">add_box</i> Ajouter une note</a>
             </div>
         </div>
 
@@ -24,10 +24,8 @@
                         <div class="card-icon">
                             <i class="material-icons">card_travel</i>
                         </div>
-                        <p class="card-category">Toal Mission</p>
-                        <h3 class="card-title">5
-                            <small>missions</small>
-                        </h3>
+                        <p class="card-category">Total Mission</p>
+                        <h3 class="card-title">{{ $x }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -42,8 +40,8 @@
                         <div class="card-icon">
                             <i class="material-icons">library_books</i>
                         </div>
-                        <p class="card-category">Notes de frais</p>
-                        <h3 class="card-title">10</h3>
+                        <p class="card-category">Note de frais</p>
+                        <h3 class="card-title">{{ $y }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -58,8 +56,8 @@
                         <div class="card-icon">
                             <i class="material-icons">directions_car</i>
                         </div>
-                        <p class="card-category">Frais kilométriques</p>
-                        <h3 class="card-title">5</h3>
+                        <p class="card-category">Frais kilométrique</p>
+                        <h3 class="card-title">{{ $z }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -74,8 +72,8 @@
                         <div class="card-icon">
                             <i class="material-icons">info_outline</i>
                         </div>
-                        <p class="card-category">Mes dépenses remboursés</p>
-                        <h3 class="card-title">0</h3>
+                        <p class="card-category">Mes dépenses remboursables</p>
+                        <h3 class="card-title">@money($e) EUR</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -139,7 +137,7 @@
                         <div class="card-icon">
                             <i class="material-icons">pie_chart</i>
                         </div>
-                        <h4 class="card-title">Remboursement du 01/11/2019 au 30/11/2019</h4>
+                        <h4 class="card-title">Remboursement du 01/12/2019 au 31/12/2019</h4>
                     </div>
                     <div class="card-body">
                         <div id="chartPreferences" class="ct-chart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="230px" class="ct-chart-pie" style="width: 100%; height: 230px;">

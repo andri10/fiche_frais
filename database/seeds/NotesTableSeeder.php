@@ -17,6 +17,8 @@ class NotesTableSeeder extends Seeder
             'ttc' => 75,
             'description' => 'Déjeuner avec l\'équipe',
             'image' => 'defaultNote.svg',
+            'start' => now(),
+            'etat' => 'À vérifier',
             'created_at' => now(),
             'updated_at' => now(),
             'mission_id' => '1'
@@ -28,6 +30,8 @@ class NotesTableSeeder extends Seeder
             'ttc' => 50,
             'description' => 'Héberger à l\'hôtel lors du déplacement à Paris',
             'image' => 'defaultNote.svg',
+            'start' => now(),
+            'etat' => 'À vérifier',
             'created_at' => now(),
             'updated_at' => now(),
             'mission_id' => '1'

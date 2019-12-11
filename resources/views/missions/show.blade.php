@@ -15,7 +15,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">card_travel</i>
                             </div>
-                            <h4 class="card-title">{{ __('Edit mission') }}</h4>
+                            <h4 class="card-title">{{ __('Modifier mission') }}</h4>
 
                         </div>
                         <div class="card-body ">
@@ -34,7 +34,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12 ml-5 mt-2 mb-2">
-                                    <h4><b style="color:blue">Total</b> @money($e) EUR &nbsp;&nbsp;<b style="color:blue">Remboursable</b> @money($e) EUR &nbsp;&nbsp;<b style="color:blue">Valideur</b> : x</h4>
+                                    <h4><b style="color:blue">Total</b> @money($e) EUR &nbsp;&nbsp;<b style="color:blue">Remboursable</b> @money($e) EUR <!-- &nbsp;&nbsp;<b style="color:blue">Valideur</b> : x --></h4>
                                 </div>
 
                             </div>
@@ -42,7 +42,7 @@
                             <div class="row">
 
                                 <div class="col-4">
-                                    <label class="col-sm-4 col-form-label">{{ __('Name') }}</label>
+                                    <label class="col-sm-4 col-form-label">{{ __('Nom') }}</label>
                                     <div class="col-sm-5">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="{{ old('name', $mission->name) }}" required="true" aria-required="true" />
@@ -68,7 +68,7 @@
                                 <div class="col-2">
                                     <label class="col-sm-4 col-form-label"></label>
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-info">{{ __('Save') }}</button>
+                                        <a href="#" class="btn btn-info">{{ __('Sauvegarder') }}</a>
                                     </div>
 
                                 </div>
@@ -77,12 +77,13 @@
 
                         </div>
 
-                        <a href="#" class="btn btn-success col-3 m-auto"><i class="material-icons">done</i> Approuver</a>
+                        <button type="submit" class="btn btn-success col-3 m-auto"><i class="material-icons">done</i> Approuver</button>
+
                         <hr class="col-8 ml-auto mr-auto">
 
                         <div class="card-body">
-                            <a href="{{ route('notes.create', $mission) }}" class="btn btn-primary"><i class="material-icons">add_box</i> Add notes</a>
-                            <a href="{{ route('fraisKms.create', $mission) }}" class="btn btn-primary"><i class="material-icons">add_box</i> Add frais KM</a>
+                            <a href="{{ route('notes.create', $mission) }}" class="btn btn-primary"><i class="material-icons">add_box</i>&nbsp; Notes</a>
+                            <a href="{{ route('fraisKms.create', $mission) }}" class="btn btn-primary"><i class="material-icons">add_box</i>&nbsp; Frais Kilométriques</a>
                         </div>
 
                         <div class="row">
@@ -94,10 +95,10 @@
                                             <table class="table table-striped">
                                                 <thead style="background:#515151; color:white">
                                                     <th class="text-center">
-                                                        {{ __('Image') }}
+                                                        {{ __('Photo') }}
                                                     </th>
                                                     <th>
-                                                        {{ __('Title') }}
+                                                        {{ __('Titre') }}
                                                     </th>
                                                     <th>
                                                         {{ __('Date') }}
@@ -126,21 +127,25 @@
                                                             <strong>{{ $note->title }}</strong>
                                                         </td>
                                                         <td>
-                                                            {{ $note->created_at }}
+                                                            {{ $note->start->format('j/m/Y') }}
                                                         </td>
                                                         <td>
                                                             @money($note->ttc) €
                                                         </td>
                                                         <td>
-                                                            <strong>{{ __('à vérifier') }}</strong>
+                                                            <strong>{{ $note->etat }}</strong>
                                                         </td>
                                                         <td class="td-actions">
+                                                        @if($note->etat === "À la compta")
+                                                        <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title=""><i class="material-icons">remove_red_eye</i></button>
+                                                        @else
                                                             <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
                                                                 <i class="material-icons">close</i>
                                                             </button>
+                                                        @endif
                                                         </td>
                                                     </tr>
                                                     @endif
@@ -154,6 +159,7 @@
                                                     @endif
                                                 </tbody>
                                             </table>
+                                            
                                         </div>
                                     </div>
                                 </div>

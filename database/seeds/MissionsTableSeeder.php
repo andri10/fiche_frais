@@ -12,8 +12,8 @@ class MissionsTableSeeder extends Seeder
     public function run()
     {
         DB::table('missions')->insert([
-            'name' => 'Mission 01',
-            'description' => 'Lorem ipsum',
+            'name' => 'Mission à Paris',
+            'description' => 'Rencontre avec les partenaires',
             'created_at' => now(),
             'updated_at' => now(),
             'user_id' => 1

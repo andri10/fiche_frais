@@ -10,14 +10,15 @@
                     @method('put')
 
                     <div class="card ">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title">{{ __('Update Mission') }}</h4>
-                            <p class="card-category"></p>
+                        <div class="card-header card-header-primary card-header-text">
+                            <div class="card-text">
+                                <h4 class="card-title">Modifier mission</h4>
+                            </div>
                         </div>
                         <div class="card-body ">
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <a href="{{ route('missions.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                    <a href="{{ route('missions.index') }}" class="btn btn-sm btn-primary">{{ __('RETOUR') }}</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -44,7 +45,7 @@
                             </div>
                         </div>
                         <div class="card-footer ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary">{{ __('Update Mission') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Mis à jour') }}</button>
                         </div>
                     </div>
                 </form>

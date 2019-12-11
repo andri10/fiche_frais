@@ -40,8 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('note/create', 'NoteController@createNote')->name('note.create');
     Route::post('note/create', 'NoteController@storeNote')->name('note.store');
 
-    Route::get('frais-km/create', 'NoteController@createFraisKM')->name('fraisKm.create');
-    Route::post('frais-km/create', 'NoteController@storeFraisKM')->name('fraisKm.store');
+    Route::get('frais-km/create', 'FraisKmController@createFraisKm')->name('fraisKm.create');
+    Route::post('frais-km/create', 'FraisKmController@storeFraisKm')->name('fraisKm.store');
 
 
     Route::resource('comptable', 'ComptableController')->middleware('roleComptable');

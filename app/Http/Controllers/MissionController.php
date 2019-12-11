@@ -66,7 +66,6 @@ class MissionController extends Controller
      */
     public function show(Mission $mission)
     {
-
         $c = 0;
         $d = 0;
 
@@ -113,11 +112,19 @@ class MissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MissionRequest $request, Mission $mission)
+    public function update(Mission $mission)
     {
-        $mission->update($request->all());
+        foreach ($mission->notes as $note) {
+            $note->etat = "À la compta";
+            $note->save();
+        }
 
-        return back()->withStatus(__('Mission successfully updated.'));
+        foreach ($mission->fraisKms as $fraisKm) {
+            $fraisKm->etat = "À la compta";
+            $fraisKm->save();
+        }
+
+        return back()->withStatus(__('Cette mission a été envoyée à la compta'));
     }
 
     /**
@@ -132,4 +139,5 @@ class MissionController extends Controller
 
         return back()->withStatus(__('Mission successfully deleted.'));
     }
+
 }

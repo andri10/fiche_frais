@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">{{ __('Mes missions') }}</h4>
-                        <p class="card-category"> {{ __('Here you can manage missions') }}</p>
+                        <p class="card-category"> {{ __('Ici vous pouvez gérer vos missions') }}</p>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -25,7 +25,7 @@
                         @endif
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="{{ route('missions.create') }}" class="btn btn-primary">{{ __('+ Add mission') }}</a>
+                                <a href="{{ route('missions.create') }}" class="btn btn-primary"><i class="material-icons">add_box</i>&nbsp;{{ __(' Mission') }}</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -35,7 +35,7 @@
                                         {{ __('#') }}
                                     </th>
                                     <th class="text-center">
-                                        {{ __('Name') }}
+                                        {{ __('Nom mission') }}
                                     </th>
                                     <th class="text-center">
 

@@ -16,7 +16,7 @@ class CheckComptable
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role === "comptable") {
+        if (Auth::user()->role === "comptable" || Auth::user()->role === "admin") {
             return $next($request);
         }
 

@@ -18,8 +18,10 @@ class CreateNotesTable extends Migration
             $table->string('title');
             $table->string('pays');
             $table->float('ttc', 8, 2);
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('image');
+            $table->date('start');
+            $table->string('etat')->default('À vérifier');
             $table->timestamps();
             $table->unsignedBigInteger('mission_id')->nullable()->unsigned();
             $table->foreign('mission_id')

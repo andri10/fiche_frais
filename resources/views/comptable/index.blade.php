@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">{{ __('Les notes de frais') }}</h4>
-                        <p class="card-category"> {{ __('Here you can manage notes') }}</p>
+                        <p class="card-category"> {{ __('Gestion comptable') }}</p>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -33,20 +33,13 @@
                             <table class="table table-striped">
                                 <thead style="background:#515151; color:white">
                                     <th>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                                <span class="form-check-sign">
-                                                    <span class="check"></span>
-                                                </span>
-                                            </label>
-                                        </div>
+
                                     </th>
                                     <th class="text-center">
                                         {{ __('Image') }}
                                     </th>
                                     <th>
-                                        {{ __('Title') }}
+                                        {{ __('Titre') }}
                                     </th>
                                     <th>
                                         {{ __('Date') }}
@@ -65,9 +58,9 @@
                                     @if (count($s) >= 1)
                                     @foreach($s as $note)
 
-                                        @if ($note === "No data"))
+                                        @if ($note === "No data")
                                         
-                                        @else
+                                        @elseif ($note->etat === "À la compta")
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -92,14 +85,11 @@
                                                 {{ $note->ttc }}
                                             </td>
                                             <td>
-                                                <strong>{{ __('Vérifier') }}</strong>
+                                                <strong>{{ $note->etat }}</strong>
                                             </td>
                                             <td class="td-actions">
                                                 <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
-                                                <i class="material-icons">edit</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
-                                                <i class="material-icons">close</i>
+                                                <i class="material-icons">remove_red_eye</i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -115,6 +105,9 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <a href="#" class="btn btn-success"><i class="material-icons">done</i> Valider</a>
+
                     </div>
                 </div>
             </div>

@@ -6,9 +6,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title ">{{ __('Mes notes de frais') }}</h4>
-                        <p class="card-category"> {{ __('Here you can manage notes') }}</p>
+                    <div class="card-header card-header-rose card-header-text">
+                        <div class="card-text">
+                            <h4 class="card-title">Mes notes de frais</h4>
+                        </div>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -26,12 +27,12 @@
                         <div class="row">
                             <div class="col-12 text-right">
                                 <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        + Add Dépenses
+                                    <button class="btn btn-primary dropdown-toggle mb-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">add_box</i>&nbsp; Ajouter une dépenses
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('note.create') }}">Add Note</a>
-                                        <a class="dropdown-item" href="#">Add Frais KM</a>
+                                        <a class="dropdown-item" href="{{ route('note.create') }}">+ Note</a>
+                                        <a class="dropdown-item" href="{{ route('fraisKm.create') }}">+ Frais Kilométrique</a>
                                     </div>
                                 </div>
                             </div>
@@ -40,11 +41,14 @@
                             
                             <table class="table table-striped">
                                 <thead style="background:#515151; color:white">
+                                    <th>
+
+                                    </th>
                                     <th class="text-center">
                                         {{ __('Image') }}
                                     </th>
                                     <th>
-                                        {{ __('Title') }}
+                                        {{ __('Titre') }}
                                     </th>
                                     <th>
                                         {{ __('Date') }}
@@ -67,6 +71,16 @@
                                         
                                         @else
                                         <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td class="text-center">
                                                 <img src="{{ asset('image/depenses/' . $note->image) }}" width="50px" height="50px" alt="Image">
                                             </td>
@@ -74,13 +88,13 @@
                                                 <strong>{{ $note->title }}</strong>
                                             </td>
                                             <td>
-                                                {{ $note->created_at }}
+                                                {{ $note->start->format('j/m/Y') }}
                                             </td>
                                             <td>
-                                                {{ $note->ttc }}
+                                                @money($note->ttc) €
                                             </td>
                                             <td>
-                                                <strong>{{ __('Vérifier') }}</strong>
+                                                <strong>{{ $note->etat }}</strong>
                                             </td>
                                             <td class="td-actions">
                                                 <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
@@ -104,6 +118,9 @@
                             </table>
 
                         </div>
+
+                        <a href="#" class="btn btn-success"><i class="material-icons">done</i> Approuver</a>
+
                     </div>
                 </div>
             </div>

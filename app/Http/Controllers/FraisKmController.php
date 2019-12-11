@@ -18,9 +18,9 @@ class FraisKmController extends Controller
     {
         return view('fraisKms.create', compact('mission'));
     }
-    public function createFraisKM()
+    public function createFraisKm()
     {
-        return view('fraisKms.create');
+        return view('fraisKms.createFraisKm');
     }
 
     /**
@@ -33,19 +33,38 @@ class FraisKmController extends Controller
     {
 
         FraisKm::create([
-            'title' => $request->input('title'),
+            'title' => $request->input('depart') . " - " . $request->input('arrivee'),
             'depart' => $request->input('depart'),
             'arrivee' => $request->input('arrivee'),
             'trajets' => $request->input('trajets'),
             'ttc' => $request->input('ttc'),
             'description' => $request->input('description'),
-            'start' => now(),
+            'start' => $request->input('start'),
             'arrival' => now(),
             'created_at' => now(),
             'image' => "defaultFraisKM.svg",
             'mission_id' => $mission->id,
         ]);
 
-        return back()->withSuccess('Great! Image has been successfully uploaded.');
+        return back()->withStatus(__('Ajoutée avec succès !'));
+    }
+
+    public function storeFraisKm(FraisKmRequest $request, Mission $mission)
+    {
+
+        FraisKm::create([
+            'title' => $request->input('depart') . " - " . $request->input('arrivee'),
+            'depart' => $request->input('depart'),
+            'arrivee' => $request->input('arrivee'),
+            'trajets' => $request->input('trajets'),
+            'ttc' => $request->input('ttc'),
+            'description' => $request->input('description'),
+            'start' => $request->input('start'),
+            'arrival' => now(),
+            'created_at' => now(),
+            'image' => "defaultFraisKM.svg",
+        ]);
+
+        return back()->withStatus(__('Ajoutée avec succès !'));
     }
 }

@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
+    protected $dates = [
+        'start'
+    ];
+
     protected $fillable = [
-        'title', 'pays', 'ttc', 'tva', 'description', 'image', 'mission_id'
+        'title', 'pays', 'ttc', 'tva', 'description', 'image', 'mission_id', 'start'
     ];
 
     public function mission()

@@ -36,7 +36,9 @@ class UserRequest extends FormRequest
                 'required', 'email', Rule::unique((new User)->getTable())->ignore($this->route()->user->id ?? null)
             ],
             'password' => [
-                $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
+                $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6', 'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',
             ]
         ];
     }

@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('Users') }}</h4>
+                <h4 class="card-title ">{{ __('Gestion des utilisateurs') }}</h4>
                 <p class="card-category"> {{ __('Here you can manage users') }}</p>
               </div>
               <div class="card-body">
@@ -25,7 +25,7 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Ajouter utilisateur') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -39,6 +39,9 @@
                       </th>
                       <th>
                         {{ __('Creation date') }}
+                      </th>
+                      <th>
+                        {{ __('Rôle') }}
                       </th>
                       <th class="text-right">
                         {{ __('Actions') }}
@@ -55,6 +58,9 @@
                           </td>
                           <td>
                             {{ $user->created_at->format('Y-m-d') }}
+                          </td>
+                          <td>
+                            {{ $user->role }}
                           </td>
                           <td class="td-actions text-right">
                             @if ($user->id != auth()->id())

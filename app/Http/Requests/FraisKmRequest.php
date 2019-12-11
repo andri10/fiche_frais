@@ -24,8 +24,13 @@ class FraisKmRequest extends FormRequest
     public function rules()
     {
         return [
+            'depart' => 'required', 'string', 'max:100',
+            'arrivee' => 'required', 'string', 'max:100',
+            'title' => 'string', 'max:100',
+            'description' => 'string', 'max:500',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'trajets' => 'required|numeric',
+            'ttc' => 'required|numeric',
         ];
     }
 }

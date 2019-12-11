@@ -60,6 +60,7 @@ class NoteController extends Controller
 
         $note->title = $request->input('title');
         $note->pays = $request->input('pays');
+        $note->start = $request->input('start');
         $note->ttc = $request->input('ttc');
         $note->description = $request->input('description');
         $note->mission_id = $mission->id;
@@ -76,7 +77,7 @@ class NoteController extends Controller
 
         $note->save();
 
-        return back()->withSuccess('Great!');
+        return back()->withStatus(__('Ajoutée avec succès !'));
     }
 
     public function storeNote(NoteRequest $request, Mission $mission)
@@ -86,25 +87,23 @@ class NoteController extends Controller
 
         $note->title = $request->input('title');
         $note->pays = $request->input('pays');
+        $note->start = $request->input('start');
         $note->ttc = $request->input('ttc');
-        $note->tva = $request->input('tva');
         $note->description = $request->input('description');
-        $note->created_at = now();
-
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('image/notes', $filename);
+            $file->move('image/depenses', $filename);
             $note->image = $filename;
         } else {
-            $note->image = 'default.svg';
+            $note->image = 'defaultNote.svg';
         }
 
         $note->save();
 
-        return back()->withSuccess('Great! Image has been successfully uploaded.');
+        return back()->withStatus(__('Ajoutée avec succès !'));
     }
 
     /**
